@@ -5,7 +5,9 @@ import "./weather.css";
 export default function Weather() {
   const [temperature, setTemperature] = useState(null);
 
-  function handleResponse(response) {}
+  function handleResponse(response) {
+    setTemperature(Math.round(response.data.main.temp));
+  }
 
   const apiKey = "06c11d11419debba7ff8c2da3a596e82";
   let city = "Austin";
