@@ -1,6 +1,8 @@
 .Weather {
   border: 1px solid #000;
+  border-radius: 10px;
   font-family: "Gill Sans", sans-serif;
+  background-color: #f2faff;
   padding: 20px;
 }
 
