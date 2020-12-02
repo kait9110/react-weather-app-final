@@ -1,3 +1,44 @@
 .Weather {
   border: 1px solid #000;
+  font-family: "Gill Sans", sans-serif;
+  padding: 20px;
+}
+
+.Weather .search-form {
+  margin: 5px 10px;
+}
+
+.Weather h1 {
+  color: #000;
+  font-size: 60px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+.Weather ul {
+  margin: 0;
+  padding: 0;
+}
+
+.Weather li {
+  list-style: none;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.Weather img {
+  size: 64px;
+  float: left;
+}
+
+.Weather .temperature {
+  font-size: 50px;
+  padding: 5px;
+}
+
+.Weather .unit {
+  font-size: 16px;
+  position: relative;
+  top: -32px;
 }

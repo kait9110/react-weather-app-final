@@ -24,7 +24,8 @@ export default function Weather() {
             src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
             alt="Cloudy"
           />
-          61°F
+          <span className="temperature">61</span>
+          <span className="unit">°F</span>
         </div>
         <div className="col-6">
           <ul>
