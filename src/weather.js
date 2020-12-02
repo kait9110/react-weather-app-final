@@ -8,6 +8,7 @@ export default function Weather() {
 
   function handleResponse(response) {
     setTemperature(Math.round(response.data.main.temp));
+    setLoaded(true);
   }
   if (loaded) {
     return (
