@@ -7,12 +7,13 @@ export default function Weather() {
   const [weatherData, setWeatherData] = useState({});
 
   function handleResponse(response) {
+    console.log(response.data);
     setWeatherData({
       city: response.data.name,
       temperature: response.data.main.temp,
-      wind: 12,
-      humidity: 5,
-      precipitation: 10,
+      wind: response.data.wind.speed,
+      humidity: response.data.main.humidity,
+      precipitation: response.data.main.precipitation,
       description: "cloudy",
     });
     setLoaded(true);
@@ -29,7 +30,7 @@ export default function Weather() {
           <input type="submit" value="Search" className="btn btn-primary" />
         </form>
 
-        <h1>{weatherData.city}</h1>
+        <h1>Austin</h1>
         <ul>
           <li>Wednesday 12:18pm</li>
           <li>{weatherData.description}</li>
@@ -49,7 +50,7 @@ export default function Weather() {
             <ul>
               <li>Precipitation: {weatherData.precipitation}%</li>
               <li>Humidity: {weatherData.humidity}%</li>
-              <li>Wind: {weatherData.wind} mph</li>
+              <li>Wind: {Math.round(weatherData.wind)} mph</li>
             </ul>
           </div>
         </div>
