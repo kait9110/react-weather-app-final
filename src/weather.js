@@ -4,10 +4,17 @@ import "./weather.css";
 
 export default function Weather() {
   const [loaded, setLoaded] = useState(false);
-  const [temperature, setTemperature] = useState(null);
+  const [weatherData, setWeatherData] = useState({});
 
   function handleResponse(response) {
-    setTemperature(Math.round(response.data.main.temp));
+    setWeatherData({
+      city: response.data.name,
+      temperature: response.data.main.temp,
+      wind: 12,
+      humidity: 5,
+      precipitation: 10,
+      description: "cloudy",
+    });
     setLoaded(true);
   }
   if (loaded) {
@@ -22,10 +29,10 @@ export default function Weather() {
           <input type="submit" value="Search" className="btn btn-primary" />
         </form>
 
-        <h1>Austin</h1>
+        <h1>{weatherData.city}</h1>
         <ul>
           <li>Wednesday 12:18pm</li>
-          <li>Cloudy</li>
+          <li>{weatherData.description}</li>
         </ul>
         <div className="row">
           <div className="col-6">
@@ -33,14 +40,16 @@ export default function Weather() {
               src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
               alt="Cloudy"
             />
-            <span className="temperature">{temperature}</span>
+            <span className="temperature">
+              {Math.round(weatherData.temperature)}
+            </span>
             <span className="unit">°F</span>
           </div>
           <div className="col-6">
             <ul>
-              <li>Precipitation: 15%</li>
-              <li>Humdity: 57%</li>
-              <li>Wind: 6 mph</li>
+              <li>Precipitation: {weatherData.precipitation}%</li>
+              <li>Humidity: {weatherData.humidity}%</li>
+              <li>Wind: {weatherData.wind} mph</li>
             </ul>
           </div>
         </div>
