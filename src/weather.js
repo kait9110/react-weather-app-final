@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./weather.css";
+import FinishedDate from "./finishedDate.js";
 
 export default function Weather() {
   const [loaded, setLoaded] = useState(false);
@@ -10,11 +11,12 @@ export default function Weather() {
     console.log(response.data);
     setWeatherData({
       city: response.data.name,
+      date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
-      precipitation: response.data.main.precipitation,
-      description: "cloudy",
+      icon: "https://ssl.gstatic.com/onebox/weather/64/cloudy.png",
+      description: response.data.weather[0].description,
     });
     setLoaded(true);
   }
@@ -24,23 +26,22 @@ export default function Weather() {
         <form>
           <input
             type="search"
-            placeHolder="Enter City Name"
+            placeholder="Enter City Name"
             className="search-form"
           />
           <input type="submit" value="Search" className="btn btn-primary" />
         </form>
 
-        <h1>Austin</h1>
+        <h1>{weatherData.city}</h1>
         <ul>
-          <li>Wednesday 12:18pm</li>
-          <li>{weatherData.description}</li>
+          <li>
+            <FinishedDate date={weatherData.date} />
+          </li>
+          <li className="text-capitalize">{weatherData.description}</li>
         </ul>
         <div className="row">
           <div className="col-6">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
-              alt="Cloudy"
-            />
+            <img src={weatherData.icon} alt={weatherData.description} />
             <span className="temperature">
               {Math.round(weatherData.temperature)}
             </span>
@@ -48,7 +49,6 @@ export default function Weather() {
           </div>
           <div className="col-6">
             <ul>
-              <li>Precipitation: {weatherData.precipitation}%</li>
               <li>Humidity: {weatherData.humidity}%</li>
               <li>Wind: {Math.round(weatherData.wind)} mph</li>
             </ul>
