@@ -29,8 +29,8 @@
   font-weight: 300;
 }
 
-.Weather img {
-  size: 64px;
+.Weather canvas {
+  padding: 10px;
   float: left;
 }
 
