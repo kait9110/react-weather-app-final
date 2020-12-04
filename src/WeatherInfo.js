@@ -1,5 +1,6 @@
 import React from "react";
 import FinishedDate from "./finishedDate.js";
+import WeatherIcon from "./WeatherIcon.js";
 
 export default function WeatherData(props) {
   return (
@@ -13,7 +14,7 @@ export default function WeatherData(props) {
       </ul>
       <div className="row">
         <div className="col-6">
-          <img src={props.data.icon} alt={props.data.description} />
+          <WeatherIcon code={props.data.icon} />
           <span className="temperature">
             {Math.round(props.data.temperature)}
           </span>
