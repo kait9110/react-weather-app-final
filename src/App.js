@@ -8,6 +8,7 @@ export default function App() {
         <Weather defaultCity="Austin" />
         <footer>
           <a
+            rel="noopener noreferrer"
             href="https://github.com/kait9110/react-weather-app-final"
             target="_blank"
           >
